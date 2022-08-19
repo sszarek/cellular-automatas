@@ -76,4 +76,17 @@ def test_transition_live_cell_survives():
     sut.transition()
 
     matrix = sut.get_matrix()
-    assert matrix == [[1, 0, 0], [1, 1, 0], [0, 0, 0]]
+    assert matrix == [[1, 1, 0], [1, 1, 0], [0, 0, 0]]
+
+def test_transition_live_cell_overpopulation():
+    sut = Automata.from_size(3,3)
+    sut.set(0, 0, 1)
+    sut.set(0,1,1)
+    sut.set(1,0,1)
+    sut.set(1,1,1)
+    sut.set(2,2,1)
+
+    sut.transition()
+
+    matrix = sut.get_matrix()
+    assert matrix == [[1,1,0],[1,0,1],[0,1,0]]

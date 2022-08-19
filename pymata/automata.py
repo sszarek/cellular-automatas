@@ -50,7 +50,7 @@ class Automata:
         if cell == 1 and (n_sum == 2 or n_sum == 3):
             return 1
 
-        if cell == 1 and n_sum < 2:
+        if cell == 1 and (n_sum < 2 or n_sum > 3):
             return 0
 
         return self.__matrix[row][col]
