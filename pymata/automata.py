@@ -1,6 +1,5 @@
 from pymata.neighborhood.moore import MooreNeighborhood
 
-
 class Automata:
     def __init__(self, matrix: list[list[int]]) -> None:
         if len(matrix) < 1 or len(matrix[0]) < 1:
