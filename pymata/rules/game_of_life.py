@@ -1,3 +1,3 @@
 class GameOfLife:
-    def apply_rule(neighborhood):
+    def apply_rule(self, neighborhood):
         print("aaa")

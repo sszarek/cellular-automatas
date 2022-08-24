@@ -46,7 +46,7 @@ class Automata:
         if cell == 0 and n_sum == 3:
             return 1
 
-        if cell == 1 and (n_sum == 2 or n_sum == 3):
+        if cell == 1 and n_sum in (2,3):
             return 1
 
         if cell == 1 and (n_sum < 2 or n_sum > 3):
