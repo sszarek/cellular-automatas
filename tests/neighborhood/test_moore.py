@@ -1,6 +1,6 @@
 import pytest
 
-from pymata.neighborhood.moore import MooreNeighborhood
+from pycells.neighborhood.moore import MooreNeighborhood
 
 
 def test_get_neighborhood_none_matrix():

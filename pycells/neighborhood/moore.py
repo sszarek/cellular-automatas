@@ -1,12 +1,12 @@
-MOORE_NEIGHBORHOOD_SIZE = 3
-DISABLED_CELL_VALUE = 0
+from .constants import MOORE_NEIGHBORHOOD_SIZE
+from ..constants import DISABLED_CELL_VALUE
 
 
 class MooreNeighborhood:
     """Contains logic for calculating Moore neighborhood"""
 
     @classmethod
-    def get_neighborhood(cls, matrix, row: int, col: int):
+    def get_neighborhood(cls, matrix, row: int, col: int) -> list[list[int]]:
         if matrix is None:
             raise ValueError("'matrix' argument must not be None")
 

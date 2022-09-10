@@ -1,4 +1,5 @@
-from pymata.neighborhood.moore import MooreNeighborhood
+from pycells.neighborhood.moore import MooreNeighborhood
+from .constants import ENABLED_CELL_VALUE, DISABLED_CELL_VALUE
 
 class Automata:
     def __init__(self, matrix: list[list[int]]) -> None:
@@ -14,7 +15,7 @@ class Automata:
         if rows < 1 or cols < 1:
             raise ValueError("aaa")
 
-        matrix = [[0 for x in range(cols)] for x in range(rows)]
+        matrix = [[DISABLED_CELL_VALUE for x in range(cols)] for x in range(rows)]
         return cls(matrix)
 
     def get_matrix(self):
@@ -43,20 +44,21 @@ class Automata:
         n_sum = row_1 + row_2 + row_3
 
         cell = neighborhood[1][1]
-        if cell == 0 and n_sum == 3:
-            return 1
+        if cell == DISABLED_CELL_VALUE and n_sum == 3:
+            return ENABLED_CELL_VALUE
 
-        if cell == 1 and n_sum in (2,3):
-            return 1
+        if cell == ENABLED_CELL_VALUE and n_sum in (2, 3):
+            return ENABLED_CELL_VALUE
 
-        if cell == 1 and (n_sum < 2 or n_sum > 3):
-            return 0
+        if cell == ENABLED_CELL_VALUE and (n_sum < 2 or n_sum > 3):
+            return DISABLED_CELL_VALUE
 
         return self.__matrix[row][col]
 
     def transition(self):
         new_matrix: list[int] = [
-            [0 for x in range(self.__cols)] for x in range(self.__rows)
+            [DISABLED_CELL_VALUE for x in range(self.__cols)]
+            for x in range(self.__rows)
         ]
 
         for idx_row, row in enumerate(self.__matrix):
